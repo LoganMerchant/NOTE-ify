@@ -1,11 +1,17 @@
 [
   {
-    "title": "Test Title",
-    "text": "Test text",
-    "id": "test_id"
+    "title": "THIS IS NOTE ONE",
+    "text": "THIS IS NOTE ONE'S TEXT\n",
+    "id": "d1cb4455-6771-4f1a-990a-63397aec9b4e"
   },
   {
-    "title": "Testing",
-    "text": "Note test"
+    "title": "This is Note Two",
+    "text": "This is Note Two's text.",
+    "id": "4bc061d3-d756-41d7-83e1-4e701a70939e"
+  },
+  {
+    "title": "this is note three",
+    "text": "this is note three's text.",
+    "id": "6ad22f5d-a80e-4f52-9711-c16e3831204f"
   }
 ]
