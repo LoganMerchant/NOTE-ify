@@ -1,43 +1,24 @@
-const fs = require('fs');
-const path = require('path');
-const { v4: uuidv4 } = require('uuid');
+const { createNote, findById } = require('../../lib/route-functions.js');
 const router = require('express').Router();
 const db = require('../../db/db.json');
 
+// Endpoint to display all of the saved notes in db.
 router.get('/notes', (req, res) => {
     res.json(db);
 });
 
+// Endpoint to add a note to db.
 router.post('/notes', (req, res) => {
-    const newNote = req.body;
-
-    newNote.id = uuidv4();
-    db.push(newNote);
-
-    fs.writeFileSync(
-        path.join(__dirname, '../../db/db.json'),
-        JSON.stringify(db, null, 2),
-    );
+    createNote(req.body, db);
 
     res.json(db);
 });
 
+// Endpoint to delete a note in db.
 router.delete('/notes/:id', (req, res) => {
-    const noteToDelete = req.params.id;
+    findById(db, req.params.id);
 
-    db.forEach((note, index) => {
-        if (note.id === noteToDelete) {
-            
-            db.splice(index, 1);
-
-            fs.writeFileSync(
-                path.join(__dirname, '../../db/db.json'),
-                JSON.stringify(db, null, 2),
-            );
-        };
-    });
-
-    res.send(`Note deleted!`);
+    res.status(200).send(`Note deleted!`);
 });
 
 module.exports = router;
