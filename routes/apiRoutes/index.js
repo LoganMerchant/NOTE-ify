@@ -24,11 +24,9 @@ router.post('/notes', (req, res) => {
 
 router.delete('/notes/:id', (req, res) => {
     const noteToDelete = req.params.id;
-    console.log(noteToDelete);
 
     db.forEach((note, index) => {
         if (note.id === noteToDelete) {
-            console.log('i got here at least');
             
             db.splice(index, 1);
 
